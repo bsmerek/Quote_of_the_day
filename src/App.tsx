@@ -10,7 +10,7 @@ function App() {
   };
   newQuote();
 
-  const [quote, setQuote] = useState("");
+  const [quote, setQuote] = useState("Click button to get quote");
   const clickHandler = () => {
     getQuote().then((data) => {
       setQuote(data);
