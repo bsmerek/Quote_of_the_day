@@ -2,9 +2,6 @@ import React from "react";
 import "@testing-library/jest-dom";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import { getQuote } from "./components/getFunction";
-
-jest.mock("./components/getFunction");
 
 describe("Text in app displays for all components", () => {
   test("Page text displays", () => {
@@ -21,7 +18,9 @@ describe("Text in app displays for all components", () => {
 
   test("Quote text displays", () => {
     render(<App />);
-    const quoteText = screen.getByText(/Click button to get quote/i);
+    const quoteText = screen.getByText(
+      /Genius is one percent inspiration and ninety-nine percent perspiration./i
+    );
     expect(quoteText).toBeInTheDocument();
   });
 });
@@ -35,8 +34,6 @@ describe("New quote is generated at button click", () => {
       act(() => {
         fireEvent.click(button);
       });
-      const quote = [{ text: "test quote" }];
-      (getQuote as jest.Mock).mockResolvedValue({ quote });
     });
   });
 

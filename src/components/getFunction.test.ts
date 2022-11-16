@@ -5,7 +5,7 @@ import { getQuote } from "./getFunction";
 jest.mock("./getFunction");
 describe("Quotes are fetched from API", () => {
   test("Quote is fetched", async () => {
-    const quote = [{ text: "test quote" }];
+    const quote = { text: "test quote" };
     (getQuote as jest.Mock).mockResolvedValue({ quote });
   });
 });
